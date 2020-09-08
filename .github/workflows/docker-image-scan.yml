@@ -14,11 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+#     - name: Build the Docker image
+#       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - uses: anchore/scan-action@master
       with:
-        image-reference: "localbuild/testimage:latest"
+        image-reference: "docker.pkg.github.com/alishah730/docker/gradle-jdk8-ubuntu:1.0.0"
         dockerfile-path: "Dockerfile"
         fail-build: true
     - name: anchore inline scan JSON results
